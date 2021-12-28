@@ -1,0 +1,11 @@
+p.subiu::after {
+  content: "⬆";
+}
+
+p.desceu::after {
+  content: "⬇";
+}
+
+p.mateve::after {
+  content: "🞒";
+}
