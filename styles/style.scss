@@ -9,6 +9,14 @@ body {
   text-align: center;
 }
 
+p::before {
+  content: "Real Time Price: R$ ";
+}
+
+span::before {
+  content: "Initial Value: R$ ";
+}
+
 p::after {
   content: "";
   border-radius: 5px;

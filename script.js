@@ -16,7 +16,8 @@ class Status {
     .then(coin => {
       const span = document.createElement('span');
       span.classList.add('init')
-      span.innerText = coin.BRL.sell;
+      const brFormatedPrice = coin.BRL.sell.toString().replace('.', ',');
+      span.innerText = brFormatedPrice;
 
       document.body.appendChild(span);
     });
@@ -26,7 +27,8 @@ class Status {
     fetch('https://blockchain.info/ticker')
     .then(body => body.json())
     .then(coin => {
-      this.price.innerText = coin.BRL.sell;
+      const brFormatedPrice = coin.BRL.sell.toString().replace('.', ',');
+      this.price.innerText = brFormatedPrice
     });
   }
 
@@ -34,8 +36,8 @@ class Status {
     const p = document.querySelector('p');
     const span = document.querySelector('.init');
   
-    const attValue = +p.innerText;
-    const initValue = +span.innerText;
+    const attValue = +p.innerText.toString().replace(',', '.');
+    const initValue = +span.innerText.toString().replace(',', '.');
 
     if (attValue > initValue) {
       this.removeStatusClass(p);
