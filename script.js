@@ -61,8 +61,9 @@ class BitcoinStatus {
   }
 
   init() {
+    this.initialPrice();
+
     if (time) {
-      this.initialPrice();
       setInterval(() => this.newPrice(), this.time * 1000);
       setInterval(() => this.extractECompare(), this.time * 1000);
     }
