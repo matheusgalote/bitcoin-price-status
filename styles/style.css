@@ -1,0 +1,30 @@
+@charset "UTF-8";
+body {
+  font: 100% "IBM Plex Mono", sans-serif;
+  color: #333;
+  font-size: 2rem;
+  text-align: center;
+}
+
+p::after {
+  content: "";
+  border-radius: 5px;
+  border: 1px solid #111;
+}
+
+p.subiu::after {
+  content: "⬆";
+  margin-left: 10px;
+}
+
+p.desceu::after {
+  content: "⬇";
+  margin-left: 10px;
+}
+
+p.manteve::after {
+  content: "➤";
+  margin-left: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */
