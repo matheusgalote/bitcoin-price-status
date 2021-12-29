@@ -5,7 +5,8 @@ class Status {
 
     // O primero valor é igual o InitialPrice
     // No entanto usamos o newPrice para não fazer o append com span
-    this.price.innerText = this.newPrice(); 
+    this.price.innerText = this.newPrice();
+    this.price.classList.add('manteve'); // inicia com o objeto com a classe manteve
     document.body.appendChild(this.price);
   }
 
