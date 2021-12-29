@@ -1,5 +1,12 @@
-function initalPrice() {
-  fetch('https://blockchain.info/ticker')
+class Status {
+  constructor(time) {
+    this.time = time;
+    this.price = document.createElement('p');
+    document.body.appendChild(this.price);
+  }
+
+  initialPrice() {
+    fetch('https://blockchain.info/ticker')
     .then(body => body.json())
     .then(coin => {
       const span = document.createElement('span');
@@ -8,45 +15,47 @@ function initalPrice() {
 
       document.body.appendChild(span);
     });
-}
+  }
 
-initalPrice();
+  newPrice() {
+    fetch('https://blockchain.info/ticker')
+    .then(body => body.json())
+    .then(coin => {
+      this.price.innerText = coin.BRL.sell;
+    });
+  }
 
-function newPrice() {
-  const p = document.createElement('p');
-  document.body.appendChild(p);
-
-  setInterval(() => {
-    async function btcPrice() {
-      const btc = await fetch('https://blockchain.info/ticker');
-      const btcJSON = await btc.json();
-    
-      p.innerText = btcJSON.BRL.sell;
+  extractECompare() {
+    const p = document.querySelector('p');
+    const span = document.querySelector('.init');
+  
+    const attValue = +p.innerText;
+    const initValue = +span.innerText;
+  
+    if (attValue > initValue) {
+      p.classList.remove('manteve');
+      p.classList.remove('desceu');
+      p.classList.add('subiu')
+    } else if (attValue < initValue) {
+      p.classList.remove('manteve');
+      p.classList.remove('subiu')
+      p.classList.add('desceu');
+    } else {
+      p.classList.remove('desceu');
+      p.classList.remove('subiu');
+      p.classList.add('manteve');
     }
-    btcPrice()
-  }, 1000 * 10);
-}
+  }
 
-newPrice();
-
-function extractECompare() {
-
-  const p = document.querySelector('p');
-  const span = document.querySelector('.init');
-
-  const attValue = +p.innerText;
-  const initValue = +span.innerText;
-
-  if (attValue > initValue) {
-    p.classList.add('subiu')
-  } else if (attValue < initValue) {
-    p.classList.add('desceu');
-  } else {
-    p.classList.add('manteve');
+  init() {
+    this.initialPrice();
+    setInterval(() => this.newPrice(), this.time * 1000);
+    setInterval(() => this.extractECompare(), this.time * 1000);
   }
 }
 
-setInterval(() => extractECompare(), 1000 * 10);
+const statu = new Status(10);
+statu.init();
 
 
 

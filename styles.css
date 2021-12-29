@@ -6,6 +6,6 @@ p.desceu::after {
   content: "⬇";
 }
 
-p.mateve::after {
-  content: "🞒";
+p.manteve::after {
+  content: "➤";
 }
