@@ -9,10 +9,6 @@ body {
   text-align: center;
 }
 
-@mixin margin($margin: 100px) {
-  margin-left: 10px;
-}
-
 p::after {
   content: "";
   border-radius: 5px;
@@ -21,15 +17,15 @@ p::after {
 
 p.subiu::after {
   content: "⬆";
-  margin-left: margin;
+  margin-left: 10px;
 }
 
 p.desceu::after {
   content: "⬇";
-  margin-left: margin;
+  margin-left: 10px;
 }
 
 p.manteve::after {
   content: "➤";
-  margin-left: margin;
+  margin-left: 10px;
 }
