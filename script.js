@@ -1,4 +1,4 @@
-class Status {
+class BitcoinStatus {
   constructor(time) {
     this.time = time;
     this.price = document.createElement('p');
@@ -36,6 +36,7 @@ class Status {
     const p = document.querySelector('p');
     const span = document.querySelector('.init');
   
+    // Volta os valores para o padrão americano para o cálculo
     const attValue = +p.innerText.toString().replace(',', '.');
     const initValue = +span.innerText.toString().replace(',', '.');
 
@@ -60,14 +61,17 @@ class Status {
   }
 
   init() {
-    this.initialPrice();
-    setInterval(() => this.newPrice(), this.time * 1000);
-    setInterval(() => this.extractECompare(), this.time * 1000);
+    if (time) {
+      this.initialPrice();
+      setInterval(() => this.newPrice(), this.time * 1000);
+      setInterval(() => this.extractECompare(), this.time * 1000);
+    }
+    return this;
   }
 }
 
-const statu = new Status(10);
-statu.init();
+const btcStatus = new BitcoinStatus(10);
+btcStatus.init();
 
 
 
