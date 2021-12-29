@@ -2,6 +2,10 @@ class Status {
   constructor(time) {
     this.time = time;
     this.price = document.createElement('p');
+
+    // O primero valor é igual o InitialPrice
+    // No entanto usamos o newPrice para não fazer o append com span
+    this.price.innerText = this.newPrice(); 
     document.body.appendChild(this.price);
   }
 
@@ -31,19 +35,24 @@ class Status {
   
     const attValue = +p.innerText;
     const initValue = +span.innerText;
-  
+
     if (attValue > initValue) {
-      p.classList.remove('manteve');
-      p.classList.remove('desceu');
-      p.classList.add('subiu')
+      this.removeStatusClass(p);
+      p.classList.add('subiu');
     } else if (attValue < initValue) {
-      p.classList.remove('manteve');
-      p.classList.remove('subiu')
+      this.removeStatusClass(p);
       p.classList.add('desceu');
     } else {
-      p.classList.remove('desceu');
-      p.classList.remove('subiu');
+      this.removeStatusClass(p);
       p.classList.add('manteve');
+    }
+  }
+
+  removeStatusClass(element) {
+    const classes = element.getAttribute('class');
+
+    if (classes) {
+      return element.removeAttribute('class');
     }
   }
 
