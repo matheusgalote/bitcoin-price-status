@@ -1,7 +1,12 @@
+$font-stack: "IBM Plex Mono", sans-serif;
+$primary-color: #333;
+$size: 2rem;
+
 body {
+  font: 100% $font-stack;
+  color: $primary-color;
+  font-size: $size;
   text-align: center;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 2rem;
 }
 
 p::after {
